@@ -1,0 +1,79 @@
+@mixin text-modifiers($val) {
+  @if $val ==text {
+    text-align: center;
+    font-size: 1.75em;
+  }
+
+  @else if $val ==author {
+    font-size: 0.75em;
+    text-align: right;
+  }
+
+  @else if $val ==submit {
+    font-size: 1.25em;
+    font-weight: 600;
+  }
+
+  @else {
+    font-size: 1em;
+    text-align: center;
+  }
+}
+
+html,
+body,
+#root,
+#quote-box-wrapper {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+#quote-box-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#change-schema {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+#quote-box {
+  max-width: 720px;
+  padding: 15px 40px 15px 40px;
+}
+
+#quote-box .card-body {
+  margin: 0 auto;
+  width: fit-content;
+}
+
+#quote-box #text {
+  @include text-modifiers(text);
+}
+
+#quote-box #author {
+  @include text-modifiers(author);
+}
+
+#quote-box #quote-box-footer {
+  display: flex;
+  flex-direction: row;
+}
+
+#quote-box #quote-box-footer div {
+  flex: 1;
+}
+
+#quote-box #quote-box-footer #social-wrapper .btn-link {
+  border: 1px solid rgba(0, 0, 0, 0.175);
+}
+
+#quote-box #new-quote {
+  @include text-modifiers(submit);
+  width: 100%;
+}
